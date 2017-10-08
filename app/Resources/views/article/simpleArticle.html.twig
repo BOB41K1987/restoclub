@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>{{ article.title }}</h1>
+    {{ article.text }}
+    <p>Дата публикации: {{ article.publishAt | date('d/m/Y H:i:s') }}</p>
+    {% for tag in article.tag %}
+        <a href="{{ path("tag", {name: tag.name})}}">{{ tag.name }}</a>
+    {% endfor %}
+
+{% endblock %}

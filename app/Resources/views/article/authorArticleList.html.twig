@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% for article in articles %}
+        {{ include('article/_singleAuthorArticle.html.twig', {article: article}) }}
+    {% endfor %}
+{% endblock %}

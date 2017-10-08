@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app.admin.simple_article:
+        class: AppBundle\Admin\SimpleArticleAdmin
+        arguments: [~, AppBundle\Entity\SimpleArticle, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm,  group: 'Статьи', label: 'Обычная статья'}
+    app.admin.author_article:
+        class: AppBundle\Admin\AuthorArticleAdmin
+        arguments: [~, AppBundle\Entity\AuthorArticle, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm,  group: 'Статьи', label: 'Авторская статья'}
+    app.admin.tag:
+        class: AppBundle\Admin\TagAdmin
+        arguments: [~, AppBundle\Entity\Tag, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm,  group: 'Теги', label: 'Теги'}

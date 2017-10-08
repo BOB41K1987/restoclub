@@ -1,0 +1,7 @@
+<div>
+    <h1><a href="{{ path("article", {slug: article.slug}) }}">{{ article.title }}</a></h1>
+    {{ article.text }}
+    {% for tag in article.tag %}
+        <a href="{{ path("tag", {name: tag.name})}}">{{ tag.name }}</a>
+    {% endfor %}
+</div>
