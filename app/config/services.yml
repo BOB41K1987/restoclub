@@ -22,3 +22,13 @@ services:
         arguments: [~, AppBundle\Entity\Tag, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm,  group: 'Теги', label: 'Теги'}
+    app.form.type.task:
+        class: AppBundle\Form\Type\TaskType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+    app.type.issue_selector:
+        class: AppBundle\Form\IssueSelectorType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type }

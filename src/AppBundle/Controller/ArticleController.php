@@ -37,11 +37,11 @@ class ArticleController extends Controller
     public function articleAction($slug, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        if($article = $em->getRepository("AppBundle:SimpleArticle")->findOneBySlug($slug)){
+        if($article = $em->getRepository("AppBundle:BaseArticle")->findOneBy(["slug" => $slug])){
             return $this->render('article/simpleArticle.html.twig', array(
                 'article' => $article
             ));
-        }elseif($article = $em->getRepository("AppBundle:AuthorArticle")->findOneBySlug($slug)){
+        }elseif($article = $em->getRepository("AppBundle:AuthorArticle")->findOneBy(["slug" => $slug])){
             return $this->render('article/authorArticle.html.twig', array(
                 'article' => $article
             ));

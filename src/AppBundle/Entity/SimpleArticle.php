@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\EntityListeners;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity
@@ -20,6 +21,10 @@ class SimpleArticle extends BaseArticle
      *      joinColumns={@ORM\JoinColumn(name="article_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
      *      )
+     * @Assert\Count(
+     *      max = 3,
+     *      maxMessage = "Вы не можете выбрать больше 3-х тегов"
+     * )
      */
     private $tag;
 

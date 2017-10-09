@@ -20,7 +20,7 @@ class AuthorArticleAdmin extends AbstractAdmin
         '_sort_order' => 'DESC',
 
         // name of the ordered field (default = the model's id field, if any)
-        '_sort_by' => 'date',
+        '_sort_by' => 'publishAt',
     );
     /**
      * @param DatagridMapper $datagridMapper
@@ -93,20 +93,5 @@ class AuthorArticleAdmin extends AbstractAdmin
             ->add('title')
             ->add('slug')
         ;
-    }
-
-    public function prePersist($newsItem)
-    {
-        //$this->preUpdate($newsItem);
-    }
-
-    public function preUpdate($newsItem)
-    {
-        /*$pictures = $newsItem->getPictures();
-        if (count($pictures) > 0) {
-            foreach ($pictures as $picture) {
-                $picture->setNews($newsItem);
-            }
-        }*/
     }
 }

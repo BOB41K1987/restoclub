@@ -8,6 +8,8 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use AppBundle\Form\TagsTextType;
 
 class SimpleArticleAdmin extends AbstractAdmin
 {
@@ -70,14 +72,25 @@ class SimpleArticleAdmin extends AbstractAdmin
             ->add('publishAt',null, [
                 'label' => "Дата публикации"
             ])
-            ->add('tag', 'entity', [
+            /*->add('tag', 'entity', [
                 'class'      => 'AppBundle:Tag',
                 'property' => 'name',
                 'multiple'  => true,
                 'label' => 'Теги'
+            ])*/
+            ->add('tag', TagsTextType::class, [
+                'label' => 'Теги (не более 3-х)',
+                'required' => false
             ])
             ->end()
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => Task::class,
+        ));
     }
 
     /**
