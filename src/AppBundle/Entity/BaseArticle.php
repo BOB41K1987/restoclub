@@ -12,7 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @ORM\DiscriminatorMap({"base_article" = "BaseArticle", "simple_article" = "SimpleArticle", "author_article" = "AuthorArticle"})
  * @ORM\HasLifecycleCallbacks()
  */
-class BaseArticle
+abstract class BaseArticle
 {
     /**
      * @var integer
@@ -47,13 +47,11 @@ class BaseArticle
 
      /**
      * @ORM\Column(name="created_at", type="datetime")
-     * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
 
     /**
      * @ORM\Column(name="updated_at", type="datetime")
-     * @Gedmo\Timestampable(on="update")
      */
     protected $updatedAt;
 
