@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity
@@ -28,7 +27,6 @@ class Tag
 
     /**
      * @ORM\Column(name="created_at", type="datetime")
-     * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
 
